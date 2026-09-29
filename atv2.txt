@@ -3,3 +3,7 @@
 2 - Dará um erro, pois o atributo só possui o método de leitura porém não tem o de escrita.
 
 3 - Porque centraliza a validação do atributo dentro da própria classe, assim não precisa realizar verificações para saber se o valor que está sendo atribuído é válido ou não.
+
+4 - A sintaxe não está errada, porém tira o sentido de ter um tratamento de exceções, já que ao capturar um erro não mostra nenhum identificador visível do erro, dessa forma os erros acontecem de forma silenciosa, dificultando a rastreabilidade e tratamento.
+
+5 - Herda os comportamentos da classe Excepcion que é a classe base de erros. Ganhando a capacidade de capturar erros por categoria e interromper o fluxo do sistema, assim um valor indevido não vai parar o sistema, mas entrar no tratamento correto.
