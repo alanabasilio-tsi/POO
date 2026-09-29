@@ -6,4 +6,4 @@
 
 4 - A sintaxe não está errada, porém tira o sentido de ter um tratamento de exceções, já que ao capturar um erro não mostra nenhum identificador visível do erro, dessa forma os erros acontecem de forma silenciosa, dificultando a rastreabilidade e tratamento.
 
-5 - Herda os comportamentos da classe Excepcion que é a classe base de erros. Ganhando a capacidade de capturar erros por categoria e interromper o fluxo do sistema, assim um valor indevido não vai parar o sistema, mas entrar no tratamento correto.
+5 - Herda os comportamentos da classe base Exception, ganhando a capacidade de categorizar erros específicos do sistema e sinalizar falhas interrompendo o fluxo normal onde o erro ocorre. Assim é possível saber exatamente qual erro ocorreu.
