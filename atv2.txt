@@ -1,0 +1,5 @@
+1 - Por convenção do python atributos com _ como _saldo é um atributo do tipo protect, ele deve ser usado para uso interno, ou seja, pela própria classe ou por subclasses (descendentes). E __saldo é um atributo private, que só deve ser acessado pela própria classe. O name mangling é um mecanismo de proteção ao atributo privado, quando se utiliza o __ o interpretador do python troca automaticamente o nome do atributo, após isso ao tentar acessar o __saldo gera um erro, afim de que não seja possível o acesso externo ao atributo.
+
+2 - Dará um erro, pois o atributo só possui o método de leitura porém não tem o de escrita.
+
+3 - Porque centraliza a validação do atributo dentro da própria classe, assim não precisa realizar verificações para saber se o valor que está sendo atribuído é válido ou não.
