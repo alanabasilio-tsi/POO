@@ -1,7 +1,9 @@
-class Veiculo:
+from abc import ABC, abstractmethod
+
+class Veiculo (ABC):
     def __init__(self, placa: str, diaria: float):
-        self.__placa = placa
-        self.__diaria = diaria
+        self.placa = placa
+        self.diaria = diaria
 
     @property
     def placa (self):
@@ -17,32 +19,32 @@ class Veiculo:
 
     @diaria.setter
     def diaria (self, diaria):
-        if not isinstance (diaria, float):
+        if not isinstance (diaria, (float, int)):
             raise TypeError ('Diaria deve ser valor numérico')
 
         if diaria < 0:
-            raise TypeError ("Diaria deve ser maior que zero")
+            raise ValueError ("Diaria deve ser maior que zero")
         self.__diaria = diaria
 
+    @abstractmethod
     def calcular_aluguel (self, dias: int):
-        pass
+        return self.diaria * dias
+#posso usar implementação ou deve ser pass?
 
-    def __str__ (self):
-        return f"Placa: {self.__placa}, Diaria: {self.__diaria}"
+    def descricao (self):
+        return f"Placa: {self.placa}, Diaria: {self.diaria:.2f}"
 
 class Carro (Veiculo):
     def calcular_aluguel (self, dias: int) -> float:
-        aluguel = self.diaria * dias
-        return aluguel
+        return super().calcular_aluguel(dias)
 
 class Moto (Veiculo):
     def calcular_aluguel (self, dias: int) -> float:
-        aluguel = (self.diaria * dias) - (self.diaria * dias)*0.2
-        return aluguel
+        return super().calcular_aluguel(dias) * 0.8
 
 class Caminhao (Veiculo):
     def calcular_aluguel (self, dias: int) -> float:
-        return 100
+        return super().calcular_aluguel(dias) + 100
 
 moto = Moto ('123', 200)
 print(moto.calcular_aluguel(5))
