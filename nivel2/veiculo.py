@@ -35,16 +35,26 @@ class Veiculo (ABC):
         return f"Placa: {self.placa}, Diaria: {self.diaria:.2f}"
 
 class Carro (Veiculo):
+
+    def descricao (self):
+        return 'Carro - ' + super().descricao()
+
     def calcular_aluguel (self, dias: int) -> float:
         return super().calcular_aluguel(dias)
 
 class Moto (Veiculo):
+
+    def descricao (self):
+            return 'Moto - ' + super().descricao()
+
     def calcular_aluguel (self, dias: int) -> float:
         return super().calcular_aluguel(dias) * 0.8
 
 class Caminhao (Veiculo):
+
+    def descricao (self):
+        return 'Caminhão - ' + super().descricao()
+
     def calcular_aluguel (self, dias: int) -> float:
         return super().calcular_aluguel(dias) + 100
 
-moto = Moto ('123', 200)
-print(moto.calcular_aluguel(5))
