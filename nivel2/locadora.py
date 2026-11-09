@@ -1,10 +1,11 @@
-
+import erros
 import veiculo
 
 class Locadora:
     def __init__ (self, cod_locadora: int):
         self.cod_locadora = cod_locadora
         self.estoque = []
+        self.faturamento_total = 0
 
     @property
     def cod_locadora (self):
@@ -24,20 +25,31 @@ class Locadora:
         for veiculo in self.estoque:
             print (veiculo.descricao())
 
-    def alugar (self, placa:str):
-        
-             
+    def alugar (self, placa:str, dias: int):
+        for veiculo in self.estoque:
+            if veiculo.placa == placa:
+                self.faturamento_previsto(veiculo.calcular_aluguel(dias))
+                return f'{veiculo} alugado com sucesso!'
+            
+        raise erros.veiculoNaoEncontrado ('Veículo não encontrado no estoque da locadora')      
 
-    #def faturamento_previsto (self):
+    def faturamento_previsto (self, faturamento: float):
+        self.faturamento_total += faturamento 
+        return self.faturamento_total
 
+    def ver_faturamento (self):
+        return self.faturamento_total
 
 ############ TESTES
 locadora1 = Locadora(1)    
 
-carro1 = veiculo.Carro ('123',500)
-moto1 = veiculo.Moto ('456',200)
+carro1 = veiculo.Carro ('123', 500)
+moto1 = veiculo.Moto ('456', 200)
+veiculo1 = veiculo.Veiculo('789',600)
 
 locadora1.cadastrar_veiculo(carro1) 
 locadora1.cadastrar_veiculo(moto1)   
 
+locadora1.alugar('123',5)
 locadora1.ver_estoque()
+print(locadora1.ver_faturamento())

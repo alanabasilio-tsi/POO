@@ -1,0 +1,2 @@
+class veiculoNaoEncontrado (Exception):
+    pass
