@@ -15,10 +15,13 @@ class Locadora:
     def cod_locadora(self, cod_locadora):
         if not isinstance (cod_locadora, int):
             raise TypeError ('Tipo precisa ser inteiro!')
-        if cod_locadora < 0:
+        if cod_locadora <= 0:
             raise ValueError ('Precisa ser maior que zero')
+        self.__cod_locadora = cod_locadora
 
-    def cadastrar_veiculo (self, objeto: veiculo.Veiculo):
+    def cadastrar_veiculo(self, objeto: Veiculo): #EXPLICAR MELHOR AGREGAÇÃO E COMPOSIÇÃO
+        if not isinstance(objeto, Veiculo):
+            raise TypeError('Apenas instâncias de Veiculo podem ser cadastradas!')
         self.estoque.append(objeto)
 
     def ver_estoque (self):
