@@ -15,14 +15,15 @@ class Veiculo (ABC):
 
     @placa.setter
     def placa (self, placa):
+        if not isinstance(placa, str):
+            raise TypeError('A placa deve ser uma string.')
         self.__placa = placa
 
     @diaria.setter
     def diaria (self, diaria):
         if not isinstance (diaria, (float, int)):
             raise TypeError ('Diaria deve ser valor numérico')
-
-        if diaria < 0:
+        if diaria <= 0:
             raise ValueError ("Diaria deve ser maior que zero")
         self.__diaria = diaria
 
@@ -35,7 +36,7 @@ class Veiculo (ABC):
         return f"Placa: {self.placa}, Diaria: {self.diaria:.2f}"
 
 class Carro (Veiculo):
-
+#DEVO USAR INIT.SUPER?
     def descricao (self):
         return 'Carro - ' + super().descricao()
 
