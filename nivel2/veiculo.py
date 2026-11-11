@@ -46,12 +46,12 @@ class Moto (Veiculo):
             return 'Moto - ' + super().descricao()
 
     def calcular_aluguel (self, dias: int) -> float:
-        return super().calcular_aluguel(dias) * 0.8
+        return (self.diaria * dias) * 0.8
 
 class Caminhao (Veiculo):
     def descricao (self):
         return 'Caminhão - ' + super().descricao()
 
     def calcular_aluguel (self, dias: int) -> float:
-        return super().calcular_aluguel(dias) + 100
+        return (self.diaria * dias) + 100
 
