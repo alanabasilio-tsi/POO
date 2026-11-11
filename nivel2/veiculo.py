@@ -29,22 +29,20 @@ class Veiculo (ABC):
 
     @abstractmethod
     def calcular_aluguel (self, dias: int):
-        return self.diaria * dias
+        pass
 #posso usar implementação ou deve ser pass?
 
     def descricao (self):
         return f"Placa: {self.placa}, Diaria: {self.diaria:.2f}"
 
 class Carro (Veiculo):
-#DEVO USAR INIT.SUPER?
     def descricao (self):
         return 'Carro - ' + super().descricao()
 
     def calcular_aluguel (self, dias: int) -> float:
-        return super().calcular_aluguel(dias)
+        return self.diaria * dias
 
 class Moto (Veiculo):
-
     def descricao (self):
             return 'Moto - ' + super().descricao()
 
@@ -52,7 +50,6 @@ class Moto (Veiculo):
         return super().calcular_aluguel(dias) * 0.8
 
 class Caminhao (Veiculo):
-
     def descricao (self):
         return 'Caminhão - ' + super().descricao()
 
