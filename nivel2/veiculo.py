@@ -30,7 +30,6 @@ class Veiculo (ABC):
     @abstractmethod
     def calcular_aluguel (self, dias: int):
         pass
-#posso usar implementação ou deve ser pass?
 
     def descricao (self):
         return f"Placa: {self.placa}, Diaria: {self.diaria:.2f}"
