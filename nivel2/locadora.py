@@ -19,8 +19,8 @@ class Locadora:
             raise ValueError ('Precisa ser maior que zero')
         self.__cod_locadora = cod_locadora
 
-    def cadastrar_veiculo(self, objeto: Veiculo): #EXPLICAR MELHOR AGREGAÇÃO E COMPOSIÇÃO
-        if not isinstance(objeto, Veiculo):
+    def cadastrar_veiculo(self, objeto: veiculo.Veiculo): #EXPLICAR MELHOR AGREGAÇÃO E COMPOSIÇÃO
+        if not isinstance(objeto, veiculo.Veiculo):
             raise TypeError('Apenas instâncias de Veiculo podem ser cadastradas!')
         self.estoque.append(objeto)
 
